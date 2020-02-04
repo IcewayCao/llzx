@@ -1,0 +1,4 @@
+cd server_config
+sudo ./usr_set
+sudo ./iptables_set
+sudo ./server_start

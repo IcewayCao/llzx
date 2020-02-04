@@ -1,0 +1,3 @@
+cd client_config
+sudo ./usr_set
+sudo ./client_start
