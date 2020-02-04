@@ -68,12 +68,12 @@ def handle_recv(cs, s):
 
 if __name__ == '__main__':
     init()
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((CLIENT_ADDR, CLIENT_PORT))
+    # s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # s.connect((CLIENT_ADDR, CLIENT_PORT))
 
-    mess = get_auth().encode()
-    s.sendall(mess)
-    s.close()
+    # mess = get_auth().encode()
+    # s.sendall(mess)
+    # s.close()
 
     ls = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     ls.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)

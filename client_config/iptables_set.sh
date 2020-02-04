@@ -29,12 +29,8 @@ iptables -t nat -A SOCKS -d 224.0.0.0/4 -j RETURN
 iptables -t nat -A SOCKS -d 240.0.0.0/4 -j RETURN
 
 iptables -t nat -A SOCKS -p tcp --dport 2222 -j RETURN
- 
-# Anything else should be redirected to shadowsocks's local port
- 
-#除上面之外的所有流量都跳转到socks的本地端口(local_port),这里使用shadosock默认端口1080
- 
-iptables -t nat -A SOCKS -p tcp -d 223.3.93.231 -j REDIRECT --to-ports 12345
+
+iptables -t nat -A SOCKS -p tcp -d 47.101.223.60 -j REDIRECT --to-ports 12345
  
 # 最后是应用上面的规则,将OUTPUT出去的tcp流量全部经过SOCKS链
  

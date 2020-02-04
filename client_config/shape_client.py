@@ -1,4 +1,4 @@
-﻿# coding: utf-8
+﻿﻿# coding: utf-8
 
 import socks
 import socket
@@ -40,6 +40,10 @@ def init():
     f = int(cf.get('params', 'f'))
     size_max = int(cf.get('params', 'size_max'))
     size_min = int(cf.get('params', 'size_min'))
+    cert = cf.get('code', 'cert')
+    iat_mode = cf.get('code', 'iat-mode')
+    global OBFS_USRNAME
+    OBFS_USRNAME = 'cert=' + cert + ';iat-mode=' + iat_mode
 
 
 def log(log_info):
@@ -189,14 +193,14 @@ def flow_recv():
 
 if __name__ == "__main__":
     init()
-    ls = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    ls.bind(('0.0.0.0', 35070))
-    log('Listening on port 35070... ')
-    ls.listen(500)
+    # ls = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # ls.bind(('0.0.0.0', 35070))
+    # log('Listening on port 35070... ')
+    # ls.listen(500)
 
-    cs, address = ls.accept()
-    recv_str = str(cs.recv(128), encoding='utf-8')
-    global OBFS_USRNAME
-    OBFS_USRNAME = recv_str
-    cs.close()
+    # cs, address = ls.accept()
+    # recv_str = str(cs.recv(128), encoding='utf-8')
+    # global OBFS_USRNAME
+    # OBFS_USRNAME = recv_str
+    # cs.close()
     flow_recv()
