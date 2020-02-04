@@ -1,9 +1,9 @@
-sudo chmod 755 obfs4proxy
-sudo cp obfs4proxy /usr/bin
+sudo chmod 755 llzxproxy
+sudo cp llzxproxy /usr/bin
 sudo adduser \
   --system \
-  --home "/var/lib/obfs4_usr/" \
+  --home "/var/lib/llzx_usr/" \
   --shell "/usr/sbin/nologin" \
   --group \
-  --gecos "obfs4" \
-  obfs4-usr
+  --gecos "llzx" \
+  llzx-usr

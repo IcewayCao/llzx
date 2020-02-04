@@ -1,6 +1,6 @@
-sudo -u obfs4-usr env \
+sudo -u llzx-usr env \
 TOR_PT_MANAGED_TRANSPORT_VER="1" \
-TOR_PT_STATE_LOCATION="/var/lib/obfs4_usr/" \
+TOR_PT_STATE_LOCATION="/var/lib/llzx_usr/" \
 TOR_PT_EXI_STDIN_CLOSE="1" \
 TOR_PT_CLIENT_TRANSPORTS="obfs4" \
-obfs4proxy -enableLogging -logLevel DEBUG
+llzxproxy -enableLogging -logLevel DEBUG
