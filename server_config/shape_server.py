@@ -4,6 +4,7 @@ import socket
 import threading
 import time
 import configparser
+import random
 
 CLIENT_ADDR = ''
 CLIENT_PORT = ''
@@ -11,11 +12,17 @@ CLIENT_PORT = ''
 
 def init():
     cf = configparser.ConfigParser()
-    cf.read('conf.ini')
+    try:
+        cf.read('conf.ini')
+    except Exception as e:
+        log('config wrong.')
+        return False
 
     global CLIENT_ADDR, CLIENT_PORT
     CLIENT_ADDR = cf.get('CLIENT', 'CLIENT_ADDR')
     CLIENT_PORT = int(cf.get('CLIENT', 'CLIENT_PORT'))
+
+    return True
 
 
 def log(log_info):
@@ -42,11 +49,12 @@ def handle_connection(cs):
     th_recv = threading.Thread(target=handle_recv, args=(cs, server_sock))
     th_recv.start()
 
-    flag = chr(1).encode(encoding='utf-8')
+    # flag = chr(1).encode(encoding='utf-8')
 
     data = cs.recv(1024)
     while data:
-        if data[0:1] == b' ' and data[len(data) - 1:len(data)] == b' ':
+        index = random.randint(0, len(data))
+        if data[0:1] == b' ' and data[len(data) - 1:len(data)] == b' ' and data[index:index+1] == b' ':
             print('empty flow to ' + port)
         else:
             print('data to ' + port)
@@ -58,16 +66,17 @@ def handle_connection(cs):
 
 
 def handle_recv(cs, s):
-    data = s.recv(4096)
+    data = s.recv(1024)
     while data:
         cs.sendall(data)
-        data = s.recv(4096)
+        data = s.recv(1024)
 
     log('connection ending.')
 
 
 if __name__ == '__main__':
-    init()
+    if not init():
+        exit()
     # s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # s.connect((CLIENT_ADDR, CLIENT_PORT))
 

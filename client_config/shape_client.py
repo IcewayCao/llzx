@@ -17,14 +17,18 @@ SERVER_PORT = ''
 
 OBFS_USRNAME = ''
 
-f = ''
-size_max = ''
-size_min = ''
+f = 0
+size_max = 0
+size_min = 0
 
 
 def init():
     cf = configparser.ConfigParser()
-    cf.read('conf.ini')
+    try:
+        cf.read('conf.ini')
+    except Exception as e:
+        log('config wrong.')
+        return False
 
     global IsNeedAuth, Username, Password, SERVER_ADDR, SERVER_PORT, f, size_max, size_min
     isneedauth = cf.get('socks5', 'IsNeedAuth')
@@ -44,6 +48,8 @@ def init():
     iat_mode = cf.get('code', 'iat-mode')
     global OBFS_USRNAME
     OBFS_USRNAME = 'cert=' + cert + ';iat-mode=' + iat_mode
+
+    return True
 
 
 def log(log_info):
@@ -80,7 +86,7 @@ def proxy(sock):
         try:
             recv = cs.recv(1024)
         except Exception as ex:
-            print('Client is Closed')
+            log('Client is Closed')
             return
         CMD = ord(recv[1:2])
         ATYP = ord(recv[3:4])
@@ -102,15 +108,15 @@ def proxy(sock):
                     dsp_addr = dsp_addrr[:-1]
                     dsp_port = 256 * ord(recv[4 + 4:4 + 4 + 1]) + ord(recv[4 + 4 + 1:4 + 4 + 2])
             else:
-                print("IPV6 is not support")
+                log("IPV6 is not support")
                 return
             s = auth_socks(dsp_port)
             cs.send(ver + b'\x00\x00\x01\x00\x00\x00\x00\x00\x00')  # REPLY
             handle_connection(cs, s)
         else:
-            print("Don't support  this Cmd", CMD)
+            log("Don't support  this Cmd", CMD)
     except Exception as e:
-        print(e)
+        log(e)
 
 
 def empty_flow_create():
@@ -133,10 +139,16 @@ def auth_socks(port):
     socket.socket = socks.socksocket
     obfs_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     obfs_sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
-    obfs_sock.connect((SERVER_ADDR, SERVER_PORT))
+    try:
+        obfs_sock.connect((SERVER_ADDR, SERVER_PORT))
+    except Exception as e:
+        log("llzx socks connect failed.")
 
     obfs_sock.sendall(str(port).encode())
-    log(str(obfs_sock.recv(128), encoding='utf-8'))
+    try:
+        log(str(obfs_sock.recv(128), encoding='utf-8'))
+    except Exception as e:
+        log("llzx handshake failed.")
     return obfs_sock
 
 
@@ -155,6 +167,7 @@ def handle_connection(cs, s):
         data = cs.recv(1024)
 
     log('connection ending.')
+    return
 
 
 def handle_send(s, flow_queue):
@@ -169,12 +182,13 @@ def handle_send(s, flow_queue):
 
 
 def handle_recv(cs, s):
-    data = s.recv(4096)
+    data = s.recv(1024)
     while data:
         cs.sendall(data)
-        data = s.recv(4096)
+        data = s.recv(1024)
 
     log('connection ending.')
+    return
 
 
 def flow_recv():
@@ -192,7 +206,8 @@ def flow_recv():
 
 
 if __name__ == "__main__":
-    init()
+    if not init():
+        exit()
     # ls = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # ls.bind(('0.0.0.0', 35070))
     # log('Listening on port 35070... ')

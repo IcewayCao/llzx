@@ -10,7 +10,7 @@ def log(log_info):
     print('[' + time.asctime(time.localtime(time.time())) + ']----' + log_info)
 
 
-def handle_connection(cs):
+def handle_connection(cs, port):
     log('thread create ok')
     n = 1
     while True:
@@ -23,7 +23,7 @@ def handle_connection(cs):
                 chunk = cs.recv(4096)
             except:
                 break
-        with open('recv', 'wb') as f:
+        with open('recv' + port, 'wb') as f:
             f.write(file)
             f.close()
         # cs.send(b'(' + str(n).encode() + b')File recv success.')
@@ -43,5 +43,5 @@ if __name__ == '__main__':
     while True:
         clientSock, address = ls.accept()
         log('connect ok.')
-        thread = threading.Thread(target=handle_connection, args=(clientSock, ))
+        thread = threading.Thread(target=handle_connection, args=(clientSock, port))
         thread.start()
