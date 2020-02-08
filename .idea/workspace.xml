@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5de88ab8-05a5-45e8-a78a-611e5ec7968d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_config/conf.ini" beforeDir="false" afterPath="$PROJECT_DIR$/client_config/conf.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_config/shape_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client_config/shape_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/llzx_ana/llzx_scapy.py" beforeDir="false" afterPath="$PROJECT_DIR$/llzx_ana/llzx_scapy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/llzx_ana/result.txt" beforeDir="false" afterPath="$PROJECT_DIR$/llzx_ana/result.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_config/conf.ini" beforeDir="false" afterPath="$PROJECT_DIR$/server_config/conf.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,49 +19,93 @@
     <session id="249324667">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.3" value="2" />
+          <entry key="project.open.time.8" value="4" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="7" />
+          <entry key="ini" value="2" />
+          <entry key="py" value="9" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="7" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1312" />
+          <entry key="ini" value="18" />
+          <entry key="py" value="1831" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1312" />
+          <entry key="PLAIN_TEXT" value="18" />
+          <entry key="Python" value="1831" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/llzx_ana/llzx_scapy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+            <state relative-caret-position="1632">
+              <caret line="69" selection-start-line="69" selection-end-line="92" />
               <folding>
-                <marker date="1580979835104" expanded="true" signature="62:179" ph="..." />
+                <element signature="e#17#40#0" expanded="true" />
+                <marker date="1581127134031" expanded="true" signature="100:217" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client_config/conf.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client_config/shape_client.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-22">
+              <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server_config/shape_server.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1345">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <element signature="e#25#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server_config/conf.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -79,10 +128,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client_config/shape_client.py" />
         <option value="$PROJECT_DIR$/server_test_time.py" />
-        <option value="$PROJECT_DIR$/server_config/shape_server.py" />
         <option value="$PROJECT_DIR$/llzx_ana/llzx_scapy.py" />
+        <option value="$PROJECT_DIR$/client_config/conf.ini" />
+        <option value="$PROJECT_DIR$/server_config/conf.ini" />
+        <option value="$PROJECT_DIR$/client_config/shape_client.py" />
+        <option value="$PROJECT_DIR$/server_config/shape_server.py" />
       </list>
     </option>
   </component>
@@ -97,7 +148,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -108,7 +158,7 @@
             <path>
               <item name="llzx-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="llzx-master" type="462c0819:PsiDirectoryNode" />
-              <item name="llzx_ana" type="462c0819:PsiDirectoryNode" />
+              <item name="client_config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="llzx-master" type="b2602c69:ProjectViewProjectNode" />
@@ -119,6 +169,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -207,7 +258,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -240,27 +291,28 @@
     <entry file="file://$PROJECT_DIR$/client_test_time.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/server_config/shape_server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client_config/shape_client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="863">
-          <caret line="121" column="24" selection-end-line="221" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/llzx_ana/llzx_scapy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        <state relative-caret-position="1632">
+          <caret line="69" selection-start-line="69" selection-end-line="92" />
           <folding>
-            <marker date="1580979835104" expanded="true" signature="62:179" ph="..." />
+            <element signature="e#17#40#0" expanded="true" />
+            <marker date="1581127134031" expanded="true" signature="100:217" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client_config/conf.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server_config/conf.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -269,6 +321,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/llzx_ana/result.txt">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client_config/shape_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-22">
+          <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server_config/shape_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1345">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#25#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

@@ -1,6 +1,8 @@
 # coding: utf-8
 
 from scapy.all import *
+from matplotlib import pyplot as plt
+
 
 class Pacpp(object):
     def __init__(self, time, len, port):
@@ -38,13 +40,12 @@ tmp_k = 0
 tmp_t = 0
 tmp_v = 0
 tmp_p = 41824
-#
-# for k in sorted_tab:
-#     if tab[k] == 74 or tab[k] == 54:
-#         continue
-#     count += 1
-#     print(str(count) + ' ' + str(k) + ' ' + str(tab[k]))
 
+for pacpp in pacpps:
+    if pacpp.len == 74 or pacpp.len == 54:
+        continue
+    count += 1
+    print(str(count) + ' ' + str(pacpp.time) + ' ' + str(pacpp.len) + ' ' + str(pacpp.port))
 
 for pacpp in pacpps:
     if pacpp.len == 74 or pacpp.len == 54:
@@ -65,3 +66,52 @@ for combine_pacpp in combine_pacpps:
     count += 1
     print(str(count) + ' ' + str(combine_pacpp.time) + ' ' + str(combine_pacpp.len) + ' ' + str(combine_pacpp.port))
 
+
+pacp_x_1 = []
+pacp_x_2 = []
+pacp_x_3 = []
+pacp_y_1 = []
+pacp_y_2 = []
+pacp_y_3 = []
+
+for pacpp in pacpps:
+    if pacpp.len == 74 or pacpp.len == 54:
+        continue
+    if pacpp.port == 41824:
+        pacp_x_1.append(pacpp.time)
+        pacp_y_1.append(pacpp.len)
+    elif pacpp.port == 41832:
+        pacp_x_2.append(pacpp.time)
+        pacp_y_2.append(pacpp.len)
+    elif pacpp.port == 41840:
+        pacp_x_3.append(pacpp.time)
+        pacp_y_3.append(pacpp.len)
+
+plt.plot(pacp_x_1, pacp_y_1)
+plt.plot(pacp_x_2, pacp_y_2)
+plt.plot(pacp_x_3, pacp_y_3)
+
+combine_pacp_x_1 = []
+combine_pacp_x_2 = []
+combine_pacp_x_3 = []
+combine_pacp_y_1 = []
+combine_pacp_y_2 = []
+combine_pacp_y_3 = []
+
+for pacpp in combine_pacpps:
+    if pacpp.port == 41824:
+        combine_pacp_x_1.append(pacpp.time)
+        combine_pacp_y_1.append(pacpp.len)
+    elif pacpp.port == 41832:
+        combine_pacp_x_2.append(pacpp.time)
+        combine_pacp_y_2.append(pacpp.len)
+    elif pacpp.port == 41840:
+        combine_pacp_x_3.append(pacpp.time)
+        combine_pacp_y_3.append(pacpp.len)
+
+plt.plot(combine_pacp_x_1, combine_pacp_y_1)
+plt.plot(combine_pacp_x_2, combine_pacp_y_2)
+plt.plot(combine_pacp_x_3, combine_pacp_y_3)
+
+
+plt.show()
