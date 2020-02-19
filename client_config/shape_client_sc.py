@@ -49,7 +49,7 @@ def init():
     if not c_s == '1':
         ctos = False
     cert = cf.get('code', 'cert')
-    iat_mode = cf.get('code', 'iat-mode')
+    iat_mode = cf.get('code', 'mode')
     global OBFS_USRNAME
     OBFS_USRNAME = 'cert=' + cert + ';iat-mode=' + iat_mode
 

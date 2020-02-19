@@ -49,7 +49,7 @@ def init():
     size_max = int(cf.get('params', 'size_max'))
     size_min = int(cf.get('params', 'size_min'))
     cert = cf.get('code', 'cert')
-    iat_mode = cf.get('code', 'iat-mode')
+    iat_mode = cf.get('code', 'mode')
     global OBFS_USRNAME
     OBFS_USRNAME = 'cert=' + cert + ';iat-mode=' + iat_mode
 

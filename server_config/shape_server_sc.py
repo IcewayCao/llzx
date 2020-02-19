@@ -7,8 +7,8 @@ import configparser
 import random
 import queue
 
-CLIENT_ADDR = ''
-CLIENT_PORT = ''
+# CLIENT_ADDR = ''
+# CLIENT_PORT = ''
 
 f = 0
 size_max = 0
@@ -24,9 +24,10 @@ def init():
         log('config wrong.')
         return False
 
-    global CLIENT_ADDR, CLIENT_PORT, f, size_max, size_min, ctos
-    CLIENT_ADDR = cf.get('CLIENT', 'CLIENT_ADDR')
-    CLIENT_PORT = int(cf.get('CLIENT', 'CLIENT_PORT'))
+    # global CLIENT_ADDR, CLIENT_PORT
+    global f, size_max, size_min, ctos
+    # CLIENT_ADDR = cf.get('CLIENT', 'CLIENT_ADDR')
+    # CLIENT_PORT = int(cf.get('CLIENT', 'CLIENT_PORT'))
     f = int(cf.get('params', 'f'))
     size_max = int(cf.get('params', 'size_max'))
     size_min = int(cf.get('params', 'size_min'))
