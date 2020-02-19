@@ -14,6 +14,8 @@ Password = ''
 
 SERVER_ADDR = ''
 SERVER_PORT = ''
+CLIENT_ADDR = ''
+CLIENT_PORT = ''
 
 OBFS_USRNAME = ''
 
@@ -30,7 +32,7 @@ def init():
         log('config wrong.')
         return False
 
-    global IsNeedAuth, Username, Password, SERVER_ADDR, SERVER_PORT, f, size_max, size_min
+    global IsNeedAuth, Username, Password, SERVER_ADDR, SERVER_PORT, CLIENT_ADDR, CLIENT_PORT, f, size_max, size_min
     isneedauth = cf.get('socks5', 'IsNeedAuth')
     if isneedauth == "False":
         IsNeedAuth = False
@@ -41,6 +43,8 @@ def init():
     Password = cf.get('socks5', 'Password')
     SERVER_ADDR = cf.get('SERVER', 'SERVER_ADDR')
     SERVER_PORT = int(cf.get('SERVER', 'SERVER_PORT'))
+    CLIENT_ADDR = cf.get('SERVER', 'SERVER_ADDR')
+    CLIENT_PORT = int(cf.get('SERVER', 'SERVER_PORT'))
     f = int(cf.get('params', 'f'))
     size_max = int(cf.get('params', 'size_max'))
     size_min = int(cf.get('params', 'size_min'))
@@ -194,8 +198,8 @@ def handle_recv(cs, s):
 def flow_recv():
     cs = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     cs.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    cs.bind(('0.0.0.0', 35080))
-    log('Listening on port 35080...')
+    cs.bind((CLIENT_ADDR, CLIENT_PORT))
+    log('Listening on port '+ str(CLIENT_PORT) + '...')
     cs.listen(500)
 
     while True:

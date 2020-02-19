@@ -6,8 +6,8 @@ import time
 import configparser
 import random
 
-CLIENT_ADDR = ''
-CLIENT_PORT = ''
+# CLIENT_ADDR = ''
+# CLIENT_PORT = ''
 
 
 def init():
@@ -75,8 +75,8 @@ def handle_recv(cs, s):
 
 
 if __name__ == '__main__':
-    if not init():
-        exit()
+    # if not init():
+    #     exit()
     # s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # s.connect((CLIENT_ADDR, CLIENT_PORT))
 
