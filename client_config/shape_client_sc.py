@@ -20,7 +20,7 @@ OBFS_USRNAME = ''
 f = 0
 size_max = 0
 size_min = 0
-ctos = True
+# ctos = True
 
 
 def init():
@@ -31,7 +31,7 @@ def init():
         log('config wrong.')
         return False
 
-    global IsNeedAuth, Username, Password, SERVER_ADDR, SERVER_PORT, f, size_max, size_min, ctos
+    global IsNeedAuth, Username, Password, SERVER_ADDR, SERVER_PORT, f, size_max, size_min
     isneedauth = cf.get('socks5', 'IsNeedAuth')
     if isneedauth == "False":
         IsNeedAuth = False
@@ -45,9 +45,9 @@ def init():
     f = int(cf.get('params', 'f'))
     size_max = int(cf.get('params', 'size_max'))
     size_min = int(cf.get('params', 'size_min'))
-    c_s = cf.get('params', 'ctos')
-    if not c_s == '1':
-        ctos = False
+    # c_s = cf.get('params', 'ctos')
+    # if not c_s == '1':
+    #     ctos = False
     cert = cf.get('code', 'cert')
     iat_mode = cf.get('code', 'mode')
     global OBFS_USRNAME
@@ -157,40 +157,23 @@ def auth_socks(port):
 
 
 def handle_connection(cs, s):
-    if ctos:
-        flow_queue = queue.Queue()
-        thread = threading.Thread(target=handle_recv, args=(cs, s))
-        thread.start()
-        log('thread recv create ok')
-        thread = threading.Thread(target=handle_send, args=(s, flow_queue))
-        thread.start()
-        log('thread send create ok')
+    thread = threading.Thread(target=handle_sc_send, args=(cs, s))
+    thread.start()
+    log('thread send create ok')
 
-        data = cs.recv(1024)
-        while data:
-            flow_queue.put(data)
-            data = cs.recv(1024)
-
-        log('connection ending.')
-        return
-    else:
-        thread = threading.Thread(target=handle_sc_send, args=(cs, s))
-        thread.start()
-        log('thread send create ok')
+    data = s.recv(1024)
+    while data:
+        index = random.randint(0, len(data))
+        if data[0:1] == b' ' and data[len(data) - 1:len(data)] == b' ' and data[index:index + 1] == b' ':
+            print('empty flow to client')
+        else:
+            print('data to client')
+            cs.sendall(data)
 
         data = s.recv(1024)
-        while data:
-            index = random.randint(0, len(data))
-            if data[0:1] == b' ' and data[len(data) - 1:len(data)] == b' ' and data[index:index + 1] == b' ':
-                print('empty flow to client')
-            else:
-                print('data to client')
-                cs.sendall(data)
 
-            data = s.recv(1024)
-
-        log('connection ending.')
-        return
+    log('connection ending.')
+    return
 
 
 def handle_send(s, flow_queue):

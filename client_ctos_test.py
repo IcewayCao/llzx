@@ -69,7 +69,7 @@ if __name__ == '__main__':
     fm2 = Frame(window)
     l_file = Label(fm2, text='文件名', font=('微软雅黑', 16))
     l_file.pack(side=LEFT, padx=50)
-    t_file = Entry(fm1, width=30, font=('微软雅黑', 16))
+    t_file = Entry(fm2, width=30, font=('微软雅黑', 16))
     t_file.pack(side=RIGHT)
     fm2.pack(side=TOP)
 

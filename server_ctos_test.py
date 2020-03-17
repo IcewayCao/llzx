@@ -14,16 +14,17 @@ def handle_connection(cs, port):
     log('thread create ok')
     mess = cs.recv(1024)
     mess_s = str(mess, encoding='utf-8')
-    filename = mess.split('#')[0]
-    freq = mess.split('#')[1]
+    filename = mess_s.split('#')[0]
+    freq = mess_s.split('#')[1]
 
     with open(filename, 'rb') as f:
         f_content = f.read()
         # res = s.sendall(f_content)
-        cs.sendall(f_content)
-        log(cs.recv(1024))
+        while True:
+            cs.sendall(f_content)
+            log(str(cs.recv(1024), encoding='utf-8'))
 
-        time.sleep(float(freq))
+            time.sleep(float(freq))
 
 
 if __name__ == '__main__':

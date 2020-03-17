@@ -13,7 +13,7 @@ import queue
 f = 0
 size_max = 0
 size_min = 0
-ctos = True
+# ctos = True
 
 
 def init():
@@ -31,9 +31,9 @@ def init():
     f = int(cf.get('params', 'f'))
     size_max = int(cf.get('params', 'size_max'))
     size_min = int(cf.get('params', 'size_min'))
-    c_s = cf.get('params', 'ctos')
-    if not c_s == '1':
-        ctos = False
+    # c_s = cf.get('params', 'ctos')
+    # if not c_s == '1':
+    #     ctos = False
 
     return True
 
@@ -59,41 +59,22 @@ def handle_connection(cs):
     server_sock.connect(('0.0.0.0', int(port)))
 
     cs.sendall(b'server connect ok.')
-    if ctos:
-        th_recv = threading.Thread(target=handle_recv, args=(cs, server_sock))
-        th_recv.start()
 
-        # flag = chr(1).encode(encoding='utf-8')
+    flow_queue = queue.Queue()
+    thread = threading.Thread(target=handle_sc_send, args=(cs, server_sock))
+    thread.start()
+    log('thread recv create ok')
+    thread = threading.Thread(target=handle_sc_recv, args=(cs, flow_queue))
+    thread.start()
+    log('thread send create ok')
 
-        data = cs.recv(1024)
-        while data:
-            index = random.randint(0, len(data))
-            if data[0:1] == b' ' and data[len(data) - 1:len(data)] == b' ' and data[index:index + 1] == b' ':
-                print('empty flow to ' + port)
-            else:
-                print('data to ' + port)
-                server_sock.sendall(data)
-
-            data = cs.recv(1024)
-
-        log('connection ending.')
-        return
-    else:
-        flow_queue = queue.Queue()
-        thread = threading.Thread(target=handle_sc_send, args=(cs, server_sock))
-        thread.start()
-        log('thread recv create ok')
-        thread = threading.Thread(target=handle_sc_recv, args=(cs, flow_queue))
-        thread.start()
-        log('thread send create ok')
-
+    data = server_sock.recv(1024)
+    while data:
+        flow_queue.put(data)
         data = server_sock.recv(1024)
-        while data:
-            flow_queue.put(data)
-            data = server_sock.recv(1024)
 
-        log('connection ending.')
-        return
+    log('connection ending.')
+    return
 
 
 def empty_flow_create():
@@ -113,7 +94,7 @@ def handle_sc_recv(cs, flow_queue):
             while not flow_queue.empty():
                 data = flow_queue.get()
                 cs.sendall(data)
-        time.sleep(f / 2)
+        time.sleep(f)
 
 
 def handle_sc_send(cs, s):

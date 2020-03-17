@@ -2,5 +2,5 @@ sudo -u llzx-usr env \
 TOR_PT_MANAGED_TRANSPORT_VER="1" \
 TOR_PT_STATE_LOCATION="/var/lib/llzx_usr/" \
 TOR_PT_EXI_STDIN_CLOSE="1" \
-TOR_PT_CLIENT_TRANSPORTS="obfs4" \
+TOR_PT_CLIENT_TRANSPORTS="llzx" \
 llzxproxy -enableLogging -logLevel DEBUG
